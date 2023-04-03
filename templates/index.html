@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IMoJIE Web App</title>
+
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        font-weight: 400;
+      }
+      html {
+        font-size: 62.5%;
+        font-family: sans-serif;
+      }
+
+      .container {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        padding-top: 5rem;
+      }
+
+      .content {
+        width: 60%;
+        border: 0px solid red;
+      }
+
+      h1 {
+        font-size: 4rem;
+        margin-bottom: 1rem;
+        color: #1b263b;
+      }
+
+      .sub-text {
+        font-size: 1.8rem;
+        margin-bottom: 4rem;
+        color: #3c3c3c;
+      }
+
+      h2 {
+        font-size: 2rem;
+        margin-bottom: 0.8rem;
+        color: #888;
+        font-weight: 600;
+        letter-spacing: 0.3px;
+      }
+
+      h3 {
+        font-size: 2.2rem;
+        margin-bottom: 1.2rem;
+        color: #333;
+      }
+
+      .model-info {
+        font-size: 1.6rem;
+        margin-bottom: 6rem;
+        color: #5e5e5e;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 4rem;
+      }
+
+      input {
+        font-size: 1.8rem;
+        padding: 1rem 1.5rem;
+        margin-bottom: 3rem;
+        border-radius: 3px;
+        border: 2px solid #bbb;
+      }
+
+      input:focus {
+        border-color: transparent;
+      }
+
+      button {
+        font-size: 1.8rem;
+        padding: 1.2rem 2rem;
+        border: none;
+        background-color: #0a2d8a;
+        border-radius: 3px;
+        color: white;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #0e42ca;
+      }
+
+      .result {
+        font-size: 2.8rem;
+        color: #1b263b;
+        margin-bottom: 3rem;
+      }
+
+      .result-container {
+        padding: 1rem 3rem;
+      }
+
+      .result-content {
+        border: 0px solid red;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-gap: 2rem;
+        margin-bottom: 3rem;
+      }
+
+      .result-box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .value-txt {
+        font-size: 2rem;
+        padding: 0.7rem 1.2rem;
+        text-align: center;
+      }
+
+      .tag-txt {
+        font-size: 1.4rem;
+        padding: 5px;
+      }
+
+      .sub-value {
+        background: rgba(66, 208, 217, 0.2);
+        width: 100%;
+        border: 2.5px solid #42d0d9;
+        border-bottom: 0;
+      }
+
+      .sub-tag {
+        background-color: #42d0d9;
+        color: #fff;
+        font-weight: bolder;
+        letter-spacing: 0.1px;
+        width: 100%;
+        text-align: center;
+      }
+
+      .rel-value {
+        background: rgba(71, 207, 164, 0.2);
+        width: 100%;
+        border: 2.5px solid #47cfa4;
+        border-bottom: 0;
+      }
+
+      .rel-tag {
+        background-color: #47cfa4;
+        color: #fff;
+        font-weight: bolder;
+        letter-spacing: 0.1px;
+        width: 100%;
+        text-align: center;
+      }
+
+      .obj-value {
+        background: rgba(66, 208, 217, 0.2);
+        width: 100%;
+        border: 2.5px solid #42d0d9;
+        border-bottom: 0;
+      }
+
+      .obj-tag {
+        background-color: #42d0d9;
+        color: #fff;
+        font-weight: bolder;
+        letter-spacing: 0.1px;
+        width: 100%;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="content">
+        <h1>Information Extraction</h1>
+        <p class="sub-text">
+          Information Extraction refers to the automatic extraction of
+          structured information such as entities, relationships between
+          entities, and attributes describing entities from unstructured
+          sources.
+        </p>
+
+        <h2>Model</h2>
+        <h3>Iterative Memory based Joint OpenIE (IMoJIE)</h3>
+        <p class="model-info">
+          Neural OpenIE system that uses sequential decoding of tuples
+          conditioned on previous tuples.
+        </p>
+        <form>
+          <input
+            placeholder="Enter a sentence"
+            value="Humans have desires and preferences of their own, so the notion of rationality as applied to humans has to do with their success in choosing actions that produce sequences of environment states that are desirable from their point of view."
+          />
+          <div class="button-holder">
+            <button>Run Model</button>
+          </div>
+        </form>
+
+        <p class="result">Model Output</p>
+
+        <div class="result-container">
+          <div class="result-content">
+            <div class="subject result-box">
+              <div class="sub-value value-txt">
+                <p>actions</p>
+              </div>
+              <div class="sub-tag tag-txt">
+                <p>Subject</p>
+              </div>
+            </div>
+
+            <div class="relation result-box">
+              <div class="rel-value value-txt">
+                <p>produce</p>
+              </div>
+              <div class="rel-tag tag-txt">
+                <p>Relation</p>
+              </div>
+            </div>
+
+            <div class="object result-box">
+              <div class="obj-value value-txt">
+                <p>sequences of environment states</p>
+              </div>
+              <div class="obj-tag tag-txt">
+                <p>Object</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="result-content">
+            <div class="subject result-box">
+              <div class="sub-value value-txt">
+                <p>Humans</p>
+              </div>
+              <div class="sub-tag tag-txt">
+                <p>Subject</p>
+              </div>
+            </div>
+
+            <div class="relation result-box">
+              <div class="rel-value value-txt">
+                <p>have</p>
+              </div>
+              <div class="rel-tag tag-txt">
+                <p>Relation</p>
+              </div>
+            </div>
+
+            <div class="object result-box">
+              <div class="obj-value value-txt">
+                <p>desires and preferences of their own</p>
+              </div>
+              <div class="obj-tag tag-txt">
+                <p>Object</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="result-content">
+            <div class="subject result-box">
+              <div class="sub-value value-txt">
+                <p>environment states</p>
+              </div>
+              <div class="sub-tag tag-txt">
+                <p>Subject</p>
+              </div>
+            </div>
+
+            <div class="relation result-box">
+              <div class="rel-value value-txt">
+                <p>are</p>
+              </div>
+              <div class="rel-tag tag-txt">
+                <p>Relation</p>
+              </div>
+            </div>
+
+            <div class="object result-box">
+              <div class="obj-value value-txt">
+                <p>desirable from their point of view</p>
+              </div>
+              <div class="obj-tag tag-txt">
+                <p>Object</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="result-content">
+            <div class="subject result-box">
+              <div class="sub-value value-txt">
+                <p>the notion of rationality as applied to humans</p>
+              </div>
+              <div class="sub-tag tag-txt">
+                <p>Subject</p>
+              </div>
+            </div>
+
+            <div class="relation result-box">
+              <div class="rel-value value-txt">
+                <p>to do</p>
+              </div>
+              <div class="rel-tag tag-txt">
+                <p>Relation</p>
+              </div>
+            </div>
+
+            <div class="object result-box">
+              <div class="obj-value value-txt">
+                <p>with their success in choosing actions</p>
+              </div>
+              <div class="obj-tag tag-txt">
+                <p>Object</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
