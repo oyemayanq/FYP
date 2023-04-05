@@ -196,20 +196,50 @@
           Neural OpenIE system that uses sequential decoding of tuples
           conditioned on previous tuples.
         </p>
-        <form>
+        <form action="{{url_for('result')}}" method="post">
           <input
             placeholder="Enter a sentence"
-            value="Humans have desires and preferences of their own, so the notion of rationality as applied to humans has to do with their success in choosing actions that produce sequences of environment states that are desirable from their point of view."
+            value="To learn about thousands of objects from millions of images, we need a model with a large learning capacity."
           />
           <div class="button-holder">
             <button>Run Model</button>
           </div>
         </form>
-
         <p class="result">Model Output</p>
 
         <div class="result-container">
+          {% for sub,rel,obj in result %}
           <div class="result-content">
+            <div class="subject result-box">
+              <div class="sub-value value-txt">
+                <p>{{sub}}</p>
+              </div>
+              <div class="sub-tag tag-txt">
+                <p>Subject</p>
+              </div>
+            </div>
+
+            <div class="relation result-box">
+              <div class="rel-value value-txt">
+                <p>{{rel}}</p>
+              </div>
+              <div class="rel-tag tag-txt">
+                <p>Relation</p>
+              </div>
+            </div>
+
+            <div class="object result-box">
+              <div class="obj-value value-txt">
+                <p>{{obj}}</p>
+              </div>
+              <div class="obj-tag tag-txt">
+                <p>Object</p>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+
+          <!--<div class="result-content">
             <div class="subject result-box">
               <div class="sub-value value-txt">
                 <p>actions</p>
@@ -236,9 +266,9 @@
                 <p>Object</p>
               </div>
             </div>
-          </div>
+          </div>-->
 
-          <div class="result-content">
+          <!--<div class="result-content">
             <div class="subject result-box">
               <div class="sub-value value-txt">
                 <p>Humans</p>
@@ -265,9 +295,9 @@
                 <p>Object</p>
               </div>
             </div>
-          </div>
+          </div>-->
 
-          <div class="result-content">
+          <!--<div class="result-content">
             <div class="subject result-box">
               <div class="sub-value value-txt">
                 <p>environment states</p>
@@ -294,9 +324,9 @@
                 <p>Object</p>
               </div>
             </div>
-          </div>
+          </div>-->
 
-          <div class="result-content">
+          <!--<div class="result-content">
             <div class="subject result-box">
               <div class="sub-value value-txt">
                 <p>the notion of rationality as applied to humans</p>
@@ -323,7 +353,7 @@
                 <p>Object</p>
               </div>
             </div>
-          </div>
+          </div>-->
         </div>
       </div>
     </div>

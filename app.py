@@ -1,5 +1,6 @@
+import subprocess
+
 from flask import Flask, render_template,request
-#import pickle
 
 app = Flask(__name__)
 #model = pickle.load(open('model.pkl','rb'))
@@ -8,15 +9,19 @@ app = Flask(__name__)
 def hello():
     return render_template("index.html")
 
-#@app.route("/predict",methods=['POST'])
-#def predict():
-#    room = int(request.form['rooms'])
-#    distance = int(request.form['distance'])
+@app.route("/result",methods=['POST'])
+def result():
+    result = subprocess.run(['python3','result.py'],stdout=subprocess.PIPE,stderr=subprocess.PIPE)
 
-#    prediction = model.predict([[room,distance]])
-#    output = round(prediction[0],2)
-#    return render_template("index.html",prediction_text = f'${output}')
+    new_result = result.stdout.decode().strip()
+
+    data = eval(new_result)
+
+    return render_template("index.html",result = data)
+
+
 
 
 if __name__ == "__main__":
     app.run()
+
