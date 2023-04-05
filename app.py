@@ -13,7 +13,9 @@ def hello():
 @app.route("/result",methods=['POST'])
 def result():
     user_input = request.form["user_input"]
+
     result = ""
+
     if platform.system() == "Windows":
     	result = subprocess.run(['python','result.py'],stdout=subprocess.PIPE,stderr=subprocess.PIPE)
     else:
