@@ -198,8 +198,9 @@
         </p>
         <form action="{{url_for('result')}}" method="post">
           <input
+            type="text"     
             placeholder="Enter a sentence"
-            value="To learn about thousands of objects from millions of images, we need a model with a large learning capacity."
+            required="required"
           />
           <div class="button-holder">
             <button>Run Model</button>
