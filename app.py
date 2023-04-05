@@ -1,4 +1,5 @@
 import subprocess
+import platform
 
 from flask import Flask, render_template,request
 
@@ -11,7 +12,11 @@ def hello():
 
 @app.route("/result",methods=['POST'])
 def result():
-    result = subprocess.run(['python3','result.py'],stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+    result = ""
+    if platform.system() == "Windows":
+    	result = subprocess.run(['python','result.py'],stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+    else:
+    	result = subprocess.run(['python3','result.py'],stdout=subprocess.PIPE,stderr=subprocess.PIPE)
 
     new_result = result.stdout.decode().strip()
 
