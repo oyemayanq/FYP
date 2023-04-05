@@ -1,2 +1,3 @@
 # FYP
-Run python3 app.py on Ubuntu (might give error on Windows)
+Run python3 app.py on Ubuntu
+Run python app.py on Windows
