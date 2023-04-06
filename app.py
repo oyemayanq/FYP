@@ -17,9 +17,9 @@ def result():
     result = ""
 
     if platform.system() == "Windows":
-    	result = subprocess.run(['python','result.py'],stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+    	result = subprocess.run(['python','result.py',user_input],stdout=subprocess.PIPE,stderr=subprocess.PIPE)
     else:
-    	result = subprocess.run(['python3','result.py'],stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+    	result = subprocess.run(['python3','result.py',user_input],stdout=subprocess.PIPE,stderr=subprocess.PIPE)
 
     new_result = result.stdout.decode().strip()
 
