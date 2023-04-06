@@ -23,9 +23,9 @@ def result():
 
     new_result = result.stdout.decode().strip()
 
-    data = eval(new_result)
+    #data = eval(new_result)
 
-    return render_template("index.html",result = data)
+    return render_template("index.html",result = "ok")
 
 
 

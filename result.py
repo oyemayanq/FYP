@@ -1,4 +1,7 @@
 from os import system
+import sys
+
+args = sys.argv
 
 def fun(inp):
 	#data = [(  'actions','produce',   'sequences of environment states'  ),(  'Humans',   'have',   'desires and preferences of their own'  ),(  'environment states',   'are' ,   'desirable from their point of view'  ),(  'the notion of rationality as applied to humans',   'to do' ,   'with their success in choosing actions'  )]
@@ -17,4 +20,4 @@ def fun(inp):
 	data = opfile.readline()
 	#return data
 
-fun()
+fun(args[-1])
